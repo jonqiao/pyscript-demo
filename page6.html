@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <title>page 6</title>
+</head>
+
+<body>
+  <br>
+  <div align="center">
+    <h1>this is a test pyscript with web interaction...</h1>
+    <textarea name="input" id="input" cols="40" rows="10"></textarea>
+    <textarea name="inputcopy" id="inputcopy" cols="40" rows="10"></textarea>
+    <div id="output"></div>
+    <div>
+      <input align="left" pys-onClick="copyinput" id="copybtn" type="button" value="copy">
+      <input align="right" pys-onClick="clearInput" id="clearMsg" type="button" value="clear">
+    </div>
+  </div>
+
+  <py-script>
+input = Element("input")
+inputcopy = Element("inputcopy")
+output = Element("output")
+
+def clearInput(*args, **kwargs):
+  input.clear()
+
+def copyinput(*args, **kwargs):
+  inputcopy.write(input.value)
+
+def showlength(*args, **kwargs):
+  output.write(len(input.value))
+
+input.element.oninput = showlength
+</py-script>
+</body>
+
+</html>
